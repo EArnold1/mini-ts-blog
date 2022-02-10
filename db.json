@@ -1,9 +1,12 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "Work  out",
-      "desc": "Hi, hello"
+      "title": "Arnold the developer",
+      "desc": "Arnold is a developer from Nigeria, he is a typescrit/javascript developer",
+      "id": 2
+    },
+    {
+      "id": 3
     }
   ]
 }
