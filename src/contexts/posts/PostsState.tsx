@@ -1,18 +1,9 @@
 import React, { ReactNode, createContext, useReducer } from 'react';
+import { PostsModel, ActionValues } from '../types';
 import PostsReducer from './postsReducer';
-import { PostsModel } from '../types';
 
 interface ProviderProps {
   children: ReactNode;
-}
-
-enum ActionTypes {
-  GET_POSTS = 'GET_POSTS',
-}
-
-interface ActionValues {
-  type: ActionTypes;
-  payload: [];
 }
 
 const initialState: PostsModel = {

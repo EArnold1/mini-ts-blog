@@ -1,13 +1,4 @@
-import { PostsModel } from '../types';
-
-enum ActionTypes {
-  GET_POSTS = 'GET_POSTS',
-}
-
-interface ActionValues {
-  type: ActionTypes;
-  payload: [];
-}
+import { PostsModel, ActionTypes, ActionValues } from '../types';
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default (state: PostsModel, action: ActionValues) => {
@@ -17,5 +8,7 @@ export default (state: PostsModel, action: ActionValues) => {
         ...state,
         posts: action.payload,
       };
+    default:
+      return state;
   }
 };
