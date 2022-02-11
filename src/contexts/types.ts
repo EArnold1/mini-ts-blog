@@ -12,3 +12,7 @@ export interface ActionValues {
   type: ActionTypes.GET_POSTS;
   payload: {}[];
 }
+
+export const initialState: PostsModel = {
+  posts: [],
+};

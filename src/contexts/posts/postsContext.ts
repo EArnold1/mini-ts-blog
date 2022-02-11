@@ -1,7 +1,11 @@
 import { createContext } from 'react';
+import { PostsModel, initialState, ActionValues } from '../types';
 
-// Since we don't know the kind of values that will be passed in,
-// We pass in an empty object as an argument
-const PostsContext = createContext({});
+// CreateContext,
+// Has two areguments, which consists of the "state" and "dispatch"
+const PostsContext = createContext<{
+  state: PostsModel;
+  dispatch: React.Dispatch<ActionValues>;
+}>({ state: initialState, dispatch: () => {} });
 
 export default PostsContext;
