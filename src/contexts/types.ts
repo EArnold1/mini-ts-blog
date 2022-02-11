@@ -1,7 +1,7 @@
 export const GET_POSTS: string = 'GET_POSTS';
 
 export interface PostsModel {
-  posts: {}[];
+  posts: [{ title: string; id: number | null; desc: string }];
 }
 
 export enum ActionTypes {
@@ -10,9 +10,21 @@ export enum ActionTypes {
 
 export interface ActionValues {
   type: ActionTypes.GET_POSTS;
-  payload: {}[];
+  payload: [
+    {
+      title: '';
+      id: null;
+      desc: '';
+    }
+  ];
 }
 
 export const initialState: PostsModel = {
-  posts: [],
+  posts: [
+    {
+      title: '',
+      id: null,
+      desc: '',
+    },
+  ],
 };

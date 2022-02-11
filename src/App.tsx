@@ -1,12 +1,14 @@
+import { FC, useContext, useEffect } from 'react';
 import axios from 'axios';
-import { FC, useContext } from 'react';
 import { PostsContext } from './contexts/posts/PostsState';
-
-enum ActionTypes {
-  GET_POSTS = 'GET_POSTS',
-}
+import { ActionTypes } from './contexts/types';
 
 const App: FC = () => {
+  useEffect(() => {
+    getPosts();
+  }, []);
+
+  // The reason posts state is not used here is beacuse we bring in the state and dispatch
   const { state, dispatch } = useContext(PostsContext);
 
   const getPosts = async () => {
@@ -18,13 +20,20 @@ const App: FC = () => {
       });
       console.log(state.posts);
     } catch (err) {
-      console.log(err);
+      alert('Server Error, try again');
     }
   };
 
+  const { posts } = state;
+
   return (
     <div className="App">
-      <button onClick={getPosts}>Click me</button>
+      {posts.map((post) => (
+        <div key={post.id}>
+          <p> {post.title} </p>
+          <p> {post.desc} </p>
+        </div>
+      ))}
       <br />
     </div>
   );
