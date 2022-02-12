@@ -7,8 +7,8 @@ const Navbar: FC = () => {
         className="navbar px-md-0 navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
         id="ftco-navbar"
       >
-        <div className="container p-1">
-          <a className="navbar-brand" href="index-2.html">
+        <div className="container">
+          <a className="navbar-brand text-dark" href="index-2.html">
             Read<i>it</i>.
           </a>
           <button

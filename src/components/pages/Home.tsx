@@ -6,21 +6,24 @@ const Home: FC = () => {
   return (
     <Fragment>
       <div
-        className="hero-wrap js-fullheight"
+        className="hero-wrap"
+        style={{
+          backgroundImage: 'url(https://bit.ly/3JmAFKS)',
+        }}
         data-stellar-background-ratio="0.5"
       >
-        <div className="overlay" />
+        {/* <div className="overlay"></div> */}
         <div className="container">
           <div
-            className="row no-gutters slider-text align-items-center justify-content-start"
-            data-scrollax-parent="false"
+            className="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+            data-scrollax-parent="true"
           >
-            <div className="col-md-12 ftco-animate">
+            <div className="col-md-12 ftco-animate ss">
               <h2 className="subheading">Hello! Welcome to</h2>
               <h1 className="mb-md-0 mb-4">Readit blog</h1>
               <div className="row">
                 <div className="col-md-7">
-                  <div className="text-dark">
+                  <div className="text">
                     <p>
                       Far far away, behind the word mountains, far from the
                       countries Vokalia and Consonantia, there live the blind
@@ -41,6 +44,7 @@ const Home: FC = () => {
           </div>
         </div>
       </div>
+
       <Section1 />
     </Fragment>
   );
