@@ -1,10 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { FC, Fragment } from 'react';
+import Home from './Header';
 
-const Section1: FC = () => {
+const Landing: FC = () => {
   return (
     <Fragment>
+      <Home />
       <section className="ftco-section">
         <div className="container">
           <div className="row">
@@ -440,4 +442,4 @@ const Section1: FC = () => {
   );
 };
 
-export default Section1;
+export default Landing;

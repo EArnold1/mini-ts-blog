@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { FC, Fragment } from 'react';
-import Section1 from './Section1';
 
 const Home: FC = () => {
   return (
@@ -21,7 +20,6 @@ const Home: FC = () => {
           </div>
         </section>
       </div>
-      <Section1 />
     </Fragment>
   );
 };

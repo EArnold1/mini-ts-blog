@@ -5,8 +5,9 @@ import { PostsContext } from './contexts/posts/PostsState';
 import { ActionTypes } from './contexts/types';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavbarComponent from './components/layout/Navbar';
-import Home from './components/pages/Home';
 import Footer from './components/pages/FooterSection';
+import Blog from './components/pages/Blog';
+import Landing from './components/pages/Landing';
 
 const App: FC = () => {
   // The reason posts state is not used here is beacuse we bring in the state and dispatch
@@ -36,7 +37,8 @@ const App: FC = () => {
       <Fragment>
         <NavbarComponent />
         <Routes>
-          <Route index element={<Home />} />
+          <Route index element={<Landing />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>
         <Footer />
       </Fragment>
