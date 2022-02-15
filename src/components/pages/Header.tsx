@@ -5,7 +5,6 @@ const Home: FC = () => {
   return (
     <Fragment>
       <div className="home text-secondary rounded p-5">
-        <div className="overlay" />
         <section className="row mt-5">
           <div className="col-sm-11">
             <h4>Hi, Welcome to</h4>
