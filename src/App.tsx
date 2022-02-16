@@ -10,6 +10,7 @@ import Blog from './components/pages/Blog';
 import Landing from './components/pages/Landing';
 import Contact from './components/pages/Contact';
 import Single from './components/pages/SinglePost';
+import PostsItems from './components/pages/PostsItems';
 
 const App: FC = () => {
   // The reason posts state is not used here is beacuse we bring in the state and dispatch
@@ -41,7 +42,7 @@ const App: FC = () => {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/posts" element={<Blog />} />
-          <Route path="/single" element={<Single />} />
+          <Route path="/single" element={<PostsItems />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />

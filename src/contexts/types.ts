@@ -1,7 +1,16 @@
-export const GET_POSTS: string = 'GET_POSTS';
-
 export interface PostsModel {
-  posts: [{ title: string; id: number | null; desc: string }];
+  posts: [
+    {
+      source: { id: string; name: string };
+      author: string;
+      title: string;
+      description: string;
+      urlToImage: string;
+      publishedAt: string;
+      content: string;
+    }
+  ];
+  loading: boolean;
 }
 
 export enum ActionTypes {
@@ -12,9 +21,16 @@ export interface ActionValues {
   type: ActionTypes.GET_POSTS;
   payload: [
     {
+      source: {
+        id: '';
+        name: '';
+      };
+      author: '';
+      content: '';
+      publishedAt: '';
       title: '';
-      id: null;
-      desc: '';
+      urlToImage: '';
+      description: '';
     }
   ];
 }
@@ -22,9 +38,17 @@ export interface ActionValues {
 export const initialState: PostsModel = {
   posts: [
     {
+      source: {
+        id: '',
+        name: '',
+      },
+      author: '',
+      content: '',
+      publishedAt: '',
       title: '',
-      id: null,
-      desc: '',
+      urlToImage: '',
+      description: '',
     },
   ],
+  loading: false,
 };
