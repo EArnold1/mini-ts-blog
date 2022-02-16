@@ -9,6 +9,7 @@ import Footer from './components/pages/FooterSection';
 import Blog from './components/pages/Blog';
 import Landing from './components/pages/Landing';
 import Contact from './components/pages/Contact';
+import Single from './components/pages/SinglePost';
 
 const App: FC = () => {
   // The reason posts state is not used here is beacuse we bring in the state and dispatch
@@ -38,8 +39,9 @@ const App: FC = () => {
       <Fragment>
         <NavbarComponent />
         <Routes>
-          <Route index element={<Landing />} />
-          <Route path="/blog" element={<Blog />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/posts" element={<Blog />} />
+          <Route path="/single" element={<Single />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
