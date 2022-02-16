@@ -7,6 +7,7 @@ export default (state: PostsModel, action: ActionValues) => {
       return {
         ...state,
         posts: action.payload,
+        loading: false,
       };
     default:
       return state;

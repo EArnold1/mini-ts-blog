@@ -10,31 +10,8 @@ import Blog from './components/pages/Blog';
 import Landing from './components/pages/Landing';
 import Contact from './components/pages/Contact';
 import Single from './components/pages/SinglePost';
-import PostsItems from './components/pages/PostsItems';
 
 const App: FC = () => {
-  // The reason posts state is not used here is beacuse we bring in the state and dispatch
-  const { state, dispatch } = useContext(PostsContext);
-
-  useEffect(() => {
-    getPosts();
-  }, []);
-
-  const getPosts = async () => {
-    try {
-      const res = await axios.get('http://localhost:5000/posts');
-      dispatch({
-        type: ActionTypes.GET_POSTS,
-        payload: res.data,
-      });
-      console.log(state.posts);
-    } catch (err) {
-      alert('Server Error, try again');
-    }
-  };
-
-  const { posts } = state;
-
   return (
     <Router>
       <Fragment>
@@ -42,7 +19,7 @@ const App: FC = () => {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/posts" element={<Blog />} />
-          <Route path="/single" element={<PostsItems />} />
+          <Route path="/single" element={<Single />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />

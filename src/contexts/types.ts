@@ -50,5 +50,5 @@ export const initialState: PostsModel = {
       description: '',
     },
   ],
-  loading: false,
+  loading: true,
 };
