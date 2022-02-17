@@ -2,15 +2,37 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/alt-text */
-import { FC, Fragment } from 'react';
-import CommentSection from './CommentSection';
+import { FC, Fragment, useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+// import CommentSection from './CommentSection';
+
+interface ValuesType {
+  content: string;
+  img: string;
+  title: string;
+}
 
 const Single: FC = () => {
+  const [postState, setPostState] = useState<ValuesType>({
+    content: '',
+    img: '',
+    title: '',
+  });
+  const values: any = useLocation().state;
+  useEffect(() => {
+    if (typeof values === 'object') {
+      const { content, img, title } = values as ValuesType; // Type casting
+
+      setPostState({ content, img, title });
+    }
+  }, []);
+
   return (
     <Fragment>
       <div className="home text-secondary rounded p-5">
-        <section className="row my-5">
-          <h1 className="my-5 text-center">SINGLE POST</h1>
+        <section className="row my-5 text-center">
+          <h1 className="my-5">SINGLE POST</h1>
+          <p className="lead my-2">{postState.title}</p>
         </section>
       </div>
       <section className="ftco-section ftco-degree-bg">
@@ -19,7 +41,7 @@ const Single: FC = () => {
             <div className="col-lg-8">
               <p className="mb-5">
                 <img
-                  src="images/ximage_1.jpg.pagespeed.ic.6nutUC1128.jpg"
+                  src={`${postState.img}`}
                   alt="Image"
                   className="img-fluid"
                 />

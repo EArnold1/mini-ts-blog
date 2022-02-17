@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import { FC, Fragment } from 'react';
 import { PostsModel } from '../../contexts/types';
+import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
 const PostsItems: FC<PostsModel> = (props) => {
@@ -25,7 +26,16 @@ const PostsItems: FC<PostsModel> = (props) => {
               <div className="text w-100 pl-md-3">
                 <span className="subheading">{post.source.name}</span>
                 <h2>
-                  <a href="blog-single.html">{post.title}</a>
+                  <Link
+                    to="/single"
+                    state={{
+                      content: post.content,
+                      img: post.urlToImage,
+                      title: post.title,
+                    }}
+                  >
+                    {post.title}
+                  </Link>
                 </h2>
                 <ul className="media-social list-unstyled">
                   <li className="ftco-animate">
@@ -46,10 +56,10 @@ const PostsItems: FC<PostsModel> = (props) => {
                 </ul>
                 <div className="meta">
                   <p className="mb-0">
-                    <a href="#">
+                    <span>
                       <Moment format="YYYY/MM/DD">{post.publishedAt}</Moment>
-                    </a>{' '}
-                    | <a href="#">12 min read</a>
+                    </span>{' '}
+                    | <span>12 min read</span>
                   </p>
                 </div>
               </div>
