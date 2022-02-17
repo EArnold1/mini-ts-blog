@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import { FC, Fragment } from 'react';
 import { PostsModel } from '../../contexts/types';
+import Moment from 'react-moment';
 
 const PostsItems: FC<PostsModel> = (props) => {
   const { posts } = props;
@@ -45,8 +46,10 @@ const PostsItems: FC<PostsModel> = (props) => {
                 </ul>
                 <div className="meta">
                   <p className="mb-0">
-                    <a href="#">{post.publishedAt}</a> |
-                    <a href="#">12 min read</a>
+                    <a href="#">
+                      <Moment format="YYYY/MM/DD">{post.publishedAt}</Moment>
+                    </a>{' '}
+                    | <a href="#">12 min read</a>
                   </p>
                 </div>
               </div>
