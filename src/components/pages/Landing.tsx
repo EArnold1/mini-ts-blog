@@ -17,13 +17,12 @@ const Landing: FC = () => {
   const getNews = async () => {
     try {
       const res = await axios.get(
-        'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=80c1b3cdbf694d129c1afb2273e844f0'
+        `https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${process.env.REACT_APP_APIKEY}`
       );
       dispatch({
         type: ActionTypes.GET_POSTS,
         payload: res.data.articles,
       });
-      console.log(state.posts);
     } catch (err) {
       alert('Server Error, try again');
     }
