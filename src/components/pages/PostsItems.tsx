@@ -14,8 +14,14 @@ const PostsItems: FC<PostsModel> = (props) => {
         <div className="case" key={post.title}>
           <div className="row">
             <div className="col-md-6 col-lg-6 col-xl-8 d-flex">
-              <a
-                href="blog-single.html"
+              <Link
+                to="/single"
+                state={{
+                  content: post.content,
+                  img: post.urlToImage,
+                  title: post.title,
+                  desc: post.description
+                }}
                 className="img w-100 mb-md-0 mb-3"
                 style={{
                   backgroundImage: `url(${post.urlToImage})`,

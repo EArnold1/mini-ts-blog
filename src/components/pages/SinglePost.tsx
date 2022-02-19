@@ -10,6 +10,7 @@ interface ValuesType {
   content: string;
   img: string;
   title: string;
+  desc: string;
 }
 
 const Single: FC = () => {
@@ -17,13 +18,14 @@ const Single: FC = () => {
     content: '',
     img: '',
     title: '',
+    desc: '',
   });
   const values: any = useLocation().state;
   useEffect(() => {
     if (typeof values === 'object') {
-      const { content, img, title } = values as ValuesType; // Type casting
+      const { content, img, title, desc } = values as ValuesType; // Type casting
 
-      setPostState({ content, img, title });
+      setPostState({ content, img, title, desc });
     }
   }, []);
 
@@ -46,18 +48,9 @@ const Single: FC = () => {
                   className="img-fluid"
                 />
               </p>
-              <h2 className="mb-3">
-                It is a long established fact a reader be distracted
-              </h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis, eius mollitia suscipit, quisquam doloremque
-                distinctio perferendis et doloribus unde architecto optio
-                laboriosam porro adipisci sapiente officiis nemo accusamus ad
-                praesentium? Esse minima nisi et. Dolore perferendis, enim
-                praesentium omnis, iste doloremque quia officia optio deserunt
-                molestiae voluptates soluta architecto tempora.
-              </p>
+              <h2 className="mb-3">{postState.title.toLocaleUpperCase()}</h2>
+              <p className="text-content">{postState.desc}</p>
+              {postState.content}
               <p>
                 Molestiae cupiditate inventore animi, maxime sapiente optio,
                 illo est nemo veritatis repellat sunt doloribus nesciunt! Minima
