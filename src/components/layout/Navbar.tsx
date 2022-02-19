@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
 const NavbarComponent: FC = () => {
@@ -12,25 +13,36 @@ const NavbarComponent: FC = () => {
       className="navbar"
     >
       <Container>
-        <Navbar.Brand href="#home" className="">
-          Read<span className="text-warning">it</span>{' '}
-        </Navbar.Brand>
+        <Link to="/">
+          <Navbar.Brand href="#home" className="">
+            {' '}
+            Read<span className="text-warning">it</span>{' '}
+          </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link href="#features" className="">
-              Home
+            <Nav.Link>
+              <Link to="/" className="text-white">
+                Home
+              </Link>
             </Nav.Link>
-            <Nav.Link href="#pricing" className="">
-              Articles
+            <Nav.Link>
+              <Link to="/articles" className="text-white">
+                Articles
+              </Link>
             </Nav.Link>
           </Nav>
           <Nav className="ml-auto">
-            <Nav.Link href="#deets" className="">
-              Team
+            <Nav.Link>
+              <Link to="/team" className="text-white">
+                Team
+              </Link>
             </Nav.Link>
-            <Nav.Link href="#memes" className="">
-              Contact
+            <Nav.Link>
+              <Link to="/contact" className="text-white">
+                Contact
+              </Link>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
