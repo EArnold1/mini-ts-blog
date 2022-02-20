@@ -18,7 +18,7 @@ export enum ActionTypes {
 }
 
 export interface ActionValues {
-  type: ActionTypes.GET_POSTS;
+  type: ActionTypes;
   payload: [
     {
       source: {

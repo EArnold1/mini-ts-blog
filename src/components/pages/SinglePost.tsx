@@ -28,9 +28,7 @@ const Single: FC = () => {
       setPostState({ content, img, title, desc });
     }
   }, []);
-  const txt = `
-      <p> hi </p>
-   `;
+
   return (
     <Fragment>
       <div className="home text-secondary rounded p-5">
@@ -52,7 +50,9 @@ const Single: FC = () => {
               </p>
               <h2 className="mb-3">{postState.title.toLocaleUpperCase()}</h2>
               <p className="text-content">{postState.desc}</p>
-              <div dangerouslySetInnerHTML={{ __html: postState.content }} />
+              <div
+                dangerouslySetInnerHTML={{ __html: postState.content }}
+              ></div>
               <h2 className="mb-3 mt-5">#2. Creative WordPress Themes</h2>
               <p>
                 Temporibus ad error suscipit exercitationem hic molestiae totam
