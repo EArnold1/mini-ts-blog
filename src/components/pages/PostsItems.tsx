@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
 const PostsItems: FC<PostsModel> = (props) => {
+  // The props passed is of type "PostsModel"
   const { posts } = props;
 
   return (
@@ -20,7 +21,8 @@ const PostsItems: FC<PostsModel> = (props) => {
                   content: post.content,
                   img: post.urlToImage,
                   title: post.title,
-                  desc: post.description
+                  desc: post.description,
+                  author: post.author,
                 }}
                 className="img w-100 mb-md-0 mb-3"
                 style={{
@@ -38,6 +40,8 @@ const PostsItems: FC<PostsModel> = (props) => {
                       content: post.content,
                       img: post.urlToImage,
                       title: post.title,
+                      desc: post.description,
+                      author: post.author,
                     }}
                   >
                     {post.title}

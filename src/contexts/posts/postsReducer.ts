@@ -9,6 +9,11 @@ export default (state: PostsModel, action: ActionValues) => {
         posts: action.payload,
         loading: false,
       };
+    case ActionTypes.GET_RECENT:
+      return {
+        ...state,
+        recentPosts: action.payload,
+      };
     default:
       return state;
   }

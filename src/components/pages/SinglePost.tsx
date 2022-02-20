@@ -2,8 +2,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/alt-text */
-import { FC, Fragment, useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { FC, Fragment, useState, useEffect, useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import PostsContext from '../../contexts/posts/postsContext';
+import Moment from 'react-moment';
+import axios from 'axios';
+import { ActionTypes } from '../../contexts/types';
 // import CommentSection from './CommentSection';
 
 interface ValuesType {
@@ -11,21 +15,46 @@ interface ValuesType {
   img: string;
   title: string;
   desc: string;
+  author: string;
 }
 
 const Single: FC = () => {
+  const { state, dispatch } = useContext(PostsContext);
+
+  useEffect(() => {
+    getRecentPosts();
+  }, []);
+
+  const getRecentPosts = async (): Promise<void> => {
+    try {
+      const res = await axios.get(
+        `https://newsapi.org/v2/top-headlines?sources=abc-news&pageSize=5&apiKey=${process.env.REACT_APP_APIKEY}`
+      );
+      dispatch({
+        type: ActionTypes.GET_RECENT,
+        payload: res.data.articles,
+      });
+    } catch (err) {
+      alert('Server Error, try again');
+    }
+  };
+
+  const { recentPosts } = state;
+
   const [postState, setPostState] = useState<ValuesType>({
     content: '',
     img: '',
     title: '',
     desc: '',
+    author: '',
   });
-  const values: any = useLocation().state;
+  const values = useLocation().state as ValuesType; // Type casting
+
   useEffect(() => {
     if (typeof values === 'object') {
-      const { content, img, title, desc } = values as ValuesType; // Type casting
+      const { content, img, title, desc, author } = values;
 
-      setPostState({ content, img, title, desc });
+      setPostState({ content, img, title, desc, author });
     }
   }, []);
 
@@ -50,59 +79,7 @@ const Single: FC = () => {
               </p>
               <h2 className="mb-3">{postState.title.toLocaleUpperCase()}</h2>
               <p className="text-content">{postState.desc}</p>
-              <div
-                dangerouslySetInnerHTML={{ __html: postState.content }}
-              ></div>
-              <h2 className="mb-3 mt-5">#2. Creative WordPress Themes</h2>
-              <p>
-                Temporibus ad error suscipit exercitationem hic molestiae totam
-                obcaecati rerum, eius aut, in. Exercitationem atque quidem
-                tempora maiores ex architecto voluptatum aut officia doloremque.
-                Error dolore voluptas, omnis molestias odio dignissimos culpa ex
-                earum nisi consequatur quos odit quasi repellat qui officiis
-                reiciendis incidunt hic non? Debitis commodi aut, adipisci.
-              </p>
-              <p className="mb-5">
-                <img
-                  src="images/ximage_2.jpg.pagespeed.ic.HhFRahl7c7.jpg"
-                  alt="image"
-                  className="img-fluid"
-                />
-              </p>
-              <p>
-                Quisquam esse aliquam fuga distinctio, quidem delectus veritatis
-                reiciendis. Nihil explicabo quod, est eos ipsum. Unde aut non
-                tenetur tempore, nisi culpa voluptate maiores officiis quis vel
-                ab consectetur suscipit veritatis nulla quos quia aspernatur
-                perferendis, libero sint. Error, velit, porro. Deserunt minus,
-                quibusdam iste enim veniam, modi rem maiores.
-              </p>
-              <p>
-                Odit voluptatibus, eveniet vel nihil cum ullam dolores laborum,
-                quo velit commodi rerum eum quidem pariatur! Quia fuga iste
-                tenetur, ipsa vel nisi in dolorum consequatur, veritatis porro
-                explicabo soluta commodi libero voluptatem similique id quidem?
-                Blanditiis voluptates aperiam non magni. Reprehenderit nobis
-                odit inventore, quia laboriosam harum excepturi ea.
-              </p>
-              <p>
-                Adipisci vero culpa, eius nobis soluta. Dolore, maxime ullam
-                ipsam quidem, dolor distinctio similique asperiores voluptas
-                enim, exercitationem ratione aut adipisci modi quod quibusdam
-                iusto, voluptates beatae iure nemo itaque laborum. Consequuntur
-                et pariatur totam fuga eligendi vero dolorum provident.
-                Voluptatibus, veritatis. Beatae numquam nam ab voluptatibus
-                culpa, tenetur recusandae!
-              </p>
-              <p>
-                Voluptas dolores dignissimos dolorum temporibus, autem aliquam
-                ducimus at officia adipisci quasi nemo a perspiciatis provident
-                magni laboriosam repudiandae iure iusto commodi debitis est
-                blanditiis alias laborum sint dolore. Dolores, iure,
-                reprehenderit. Error provident, pariatur cupiditate soluta
-                doloremque aut ratione. Harum voluptates mollitia illo minus
-                praesentium, rerum ipsa debitis, inventore?
-              </p>
+
               <div className="tag-widget post-tag-container mb-5 mt-5">
                 <div className="tagcloud">
                   <a href="#" className="tag-cloud-link">
@@ -128,7 +105,7 @@ const Single: FC = () => {
                   />
                 </div>
                 <div className="desc">
-                  <h3>George Washington</h3>
+                  <h3>{postState.author.toLocaleUpperCase()}</h3>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Ducimus itaque, autem necessitatibus voluptate quod mollitia
@@ -145,174 +122,69 @@ const Single: FC = () => {
                 <div className="categories">
                   <h3>Categories</h3>
                   <li>
-                    <a href="#">
+                    <Link to="/articles/illustration">
                       Illustration <span className="ion-ios-arrow-forward" />
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link to="/articles/branding">
                       Branding <span className="ion-ios-arrow-forward" />
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link to="/articles/application">
                       Application <span className="ion-ios-arrow-forward" />
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link to="/articles/design">
                       Design <span className="ion-ios-arrow-forward" />
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link to="/articles/marketing">
                       Marketing <span className="ion-ios-arrow-forward" />
-                    </a>
+                    </Link>
                   </li>
                 </div>
               </div>
               <div className="sidebar-box">
                 <h3>Recent Blog</h3>
-                <div className="block-21 d-flex mb-4">
-                  <a
-                    className="blog-img mr-4"
-                    style={{
-                      backgroundImage:
-                        'url(images/ximage_1.jpg.pagespeed.ic.6nutUC1128.jpg)',
-                    }}
-                  />
-                  <div className="text">
-                    <h3 className="heading">
-                      <a href="#">
-                        Even the all-powerful Pointing has no control about the
-                        blind texts
-                      </a>
-                    </h3>
-                    <div className="meta">
-                      <div>
-                        <a href="#">
-                          <span className="icon-calendar" /> Nov. 14, 2019
-                        </a>
-                      </div>
-                      <div>
-                        <a href="#">
-                          <span className="icon-person" /> Admin
-                        </a>
-                      </div>
-                      <div>
-                        <a href="#">
-                          <span className="icon-chat" /> 19
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="block-21 d-flex mb-4">
-                  <a
-                    className="blog-img mr-4"
-                    style={{
-                      backgroundImage:
-                        'url(images/ximage_2.jpg.pagespeed.ic.HhFRahl7c7.jpg)',
-                    }}
-                  />
-                  <div className="text">
-                    <h3 className="heading">
-                      <a href="#">
-                        Even the all-powerful Pointing has no control about the
-                        blind texts
-                      </a>
-                    </h3>
-                    <div className="meta">
-                      <div>
-                        <a href="#">
-                          <span className="icon-calendar" /> Nov. 14, 2019
-                        </a>
-                      </div>
-                      <div>
-                        <a href="#">
-                          <span className="icon-person" /> Admin
-                        </a>
-                      </div>
-                      <div>
-                        <a href="#">
-                          <span className="icon-chat" /> 19
-                        </a>
+                {recentPosts.map((recentPost) => (
+                  <div className="block-21 d-flex mb-4" key={recentPost.title}>
+                    <a
+                      className="blog-img mr-4"
+                      style={{
+                        backgroundImage: `url(${recentPost.urlToImage})`,
+                      }}
+                    />
+                    <div className="text">
+                      <h3 className="heading">
+                        <a href="#">{recentPost.title}</a>
+                      </h3>
+                      <div className="meta">
+                        <div>
+                          <a href="#">
+                            <span className="icon-calendar" />{' '}
+                            <Moment format="YYYY/MM/DD">
+                              {recentPost.publishedAt}
+                            </Moment>
+                          </a>
+                        </div>
+                        <div>
+                          <a href="#">
+                            <span className="icon-person" /> Admin
+                          </a>
+                        </div>
+                        {/* <div>
+                          <a href="#">
+                            <span className="icon-chat" /> 19
+                          </a>
+                        </div> */}
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="block-21 d-flex mb-4">
-                  <a
-                    className="blog-img mr-4"
-                    style={{
-                      backgroundImage:
-                        'url(images/ximage_3.jpg.pagespeed.ic.IDmnFNLqH_.jpg)',
-                    }}
-                  />
-                  <div className="text">
-                    <h3 className="heading">
-                      <a href="#">
-                        Even the all-powerful Pointing has no control about the
-                        blind texts
-                      </a>
-                    </h3>
-                    <div className="meta">
-                      <div>
-                        <a href="#">
-                          <span className="icon-calendar" /> Nov. 14, 2019
-                        </a>
-                      </div>
-                      <div>
-                        <a href="#">
-                          <span className="icon-person" /> Admin
-                        </a>
-                      </div>
-                      <div>
-                        <a href="#">
-                          <span className="icon-chat" /> 19
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="sidebar-box">
-                <h3>Tag Cloud</h3>
-                <div className="tagcloud">
-                  <a href="#" className="tag-cloud-link">
-                    cat
-                  </a>
-                  <a href="#" className="tag-cloud-link">
-                    abstract
-                  </a>
-                  <a href="#" className="tag-cloud-link">
-                    people
-                  </a>
-                  <a href="#" className="tag-cloud-link">
-                    person
-                  </a>
-                  <a href="#" className="tag-cloud-link">
-                    model
-                  </a>
-                  <a href="#" className="tag-cloud-link">
-                    delicious
-                  </a>
-                  <a href="#" className="tag-cloud-link">
-                    desserts
-                  </a>
-                  <a href="#" className="tag-cloud-link">
-                    drinks
-                  </a>
-                </div>
-              </div>
-              <div className="sidebar-box">
-                <h3>Paragraph</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Ducimus itaque, autem necessitatibus voluptate quod mollitia
-                  delectus aut, sunt placeat nam vero culpa sapiente consectetur
-                  similique, inventore eos fugit cupiditate numquam!
-                </p>
+                ))}
               </div>
             </div>
           </div>
