@@ -2,7 +2,7 @@ import { FC, useContext, useEffect, Fragment } from 'react';
 import axios from 'axios';
 import './App.css';
 import { PostsContext } from './contexts/posts/PostsState';
-import { ActionTypes } from './contexts/types';
+import { ActionTypes } from './contexts/posts/types';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavbarComponent from './components/layout/Navbar';
 import Footer from './components/pages/FooterSection';

@@ -7,7 +7,7 @@ import { Link, useLocation } from 'react-router-dom';
 import PostsContext from '../../contexts/posts/postsContext';
 import Moment from 'react-moment';
 import axios from 'axios';
-import { ActionTypes } from '../../contexts/types';
+import { ActionTypes } from '../../contexts/posts/types';
 // import CommentSection from './CommentSection';
 
 interface ValuesType {
@@ -20,10 +20,6 @@ interface ValuesType {
 
 const Single: FC = () => {
   const { state, dispatch } = useContext(PostsContext);
-
-  useEffect(() => {
-    getRecentPosts();
-  }, []);
 
   const getRecentPosts = async (): Promise<void> => {
     try {
@@ -51,6 +47,7 @@ const Single: FC = () => {
   const values = useLocation().state as ValuesType; // Type casting
 
   useEffect(() => {
+    getRecentPosts();
     if (typeof values === 'object') {
       const { content, img, title, desc, author } = values;
 

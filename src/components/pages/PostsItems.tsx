@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/anchor-has-content */
 import { FC, Fragment } from 'react';
-import { PostsModel } from '../../contexts/types';
+import { PostsModel } from '../../contexts/posts/types';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 

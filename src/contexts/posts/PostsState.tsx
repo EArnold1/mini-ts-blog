@@ -1,5 +1,5 @@
 import { ReactNode, useReducer } from 'react';
-import { initialState } from '../types';
+import { initialState } from './types';
 import PostsContext from './postsContext';
 import PostsReducer from './postsReducer';
 

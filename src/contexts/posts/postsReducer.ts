@@ -1,4 +1,4 @@
-import { PostsModel, ActionTypes, ActionValues } from '../types';
+import { PostsModel, ActionTypes, ActionValues } from './types';
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default (state: PostsModel, action: ActionValues) => {

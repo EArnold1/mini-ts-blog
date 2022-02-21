@@ -4,7 +4,7 @@ import { FC, Fragment, useEffect, useContext } from 'react';
 import Home from './Header';
 import axios from 'axios';
 import PostsContext from '../../contexts/posts/postsContext';
-import { ActionTypes } from '../../contexts/types';
+import { ActionTypes } from '../../contexts/posts/types';
 import PostsItems from './PostsItems';
 
 const Landing: FC = () => {

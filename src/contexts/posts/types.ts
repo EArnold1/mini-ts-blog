@@ -1,3 +1,5 @@
+////////////////////////////// NEWS-POST TYPES
+
 export interface PostsModel {
   posts: [
     {
