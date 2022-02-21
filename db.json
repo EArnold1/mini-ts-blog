@@ -1,9 +1,22 @@
 {
-  "posts": [
+  "blogposts": [
     {
+      "id": 1,
       "title": "Arnold the Typescript Developer",
       "desc": "Arnold is a developer from Nigeria, he loves typescript",
-      "id": 1
+      "urlToImage": "lol",
+      "content": "yes",
+      "author": "me",
+      "publishedAt": "55/778/0009"
+    },
+    {
+      "title": "Arnold the developer",
+      "desc": "Arnold is a developer from Nigeria, he is a typescrit/javascript developer",
+      "content": "salute",
+      "author": "me",
+      "publishedAt": "today lol",
+      "urlToImage": "sela",
+      "id": 2
     }
   ]
 }

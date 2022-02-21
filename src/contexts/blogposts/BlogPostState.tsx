@@ -7,7 +7,7 @@ interface ProviderProps {
   children: ReactNode;
 }
 
-const PostsState = ({ children }: ProviderProps) => {
+const BlogPostsState = ({ children }: ProviderProps) => {
   const [state, dispatch] = useReducer(BlogPostReducer, initialState);
 
   return (
@@ -17,4 +17,4 @@ const PostsState = ({ children }: ProviderProps) => {
   );
 };
 
-export { PostsState, BlogPostContext };
+export { BlogPostsState, BlogPostContext };

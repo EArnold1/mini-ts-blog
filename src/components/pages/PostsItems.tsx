@@ -16,7 +16,7 @@ const PostsItems: FC<PostsModel> = (props) => {
           <div className="row">
             <div className="col-md-6 col-lg-6 col-xl-8 d-flex">
               <Link
-                to="/single"
+                to={`/single/${post.title}`}
                 state={{
                   content: post.content,
                   img: post.urlToImage,
@@ -35,7 +35,7 @@ const PostsItems: FC<PostsModel> = (props) => {
                 <span className="subheading">{post.source.name}</span>
                 <h2>
                   <Link
-                    to="/single"
+                    to={`/single/${post.title}`}
                     state={{
                       content: post.content,
                       img: post.urlToImage,
