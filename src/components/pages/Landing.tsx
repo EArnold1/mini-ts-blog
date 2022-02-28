@@ -28,7 +28,7 @@ const Landing: FC = () => {
     }
   };
 
-  const { posts, loading, recentPosts } = state;
+  const { posts, loading } = state;
 
   return (
     <Fragment>
@@ -37,11 +37,7 @@ const Landing: FC = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <PostsItems
-                recentPosts={recentPosts}
-                posts={posts}
-                loading={loading}
-              />
+              <PostsItems loading={loading} posts={posts} />
             </div>
           </div>
         </div>

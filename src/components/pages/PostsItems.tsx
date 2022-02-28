@@ -1,13 +1,30 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/anchor-has-content */
 import { FC, Fragment } from 'react';
-import { PostsModel } from '../../contexts/posts/types';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
-const PostsItems: FC<PostsModel> = (props) => {
-  // The props passed is of type "PostsModel"
-  const { posts } = props;
+interface PostsItemsModel {
+  posts:
+    | [
+        {
+          source: { id: string; name: string };
+          author: string;
+          title: string;
+          description: string;
+          urlToImage: string;
+          publishedAt: string;
+          content: string;
+        }
+      ]
+    | [];
+  loading: boolean;
+}
+
+const PostsItems: FC<PostsItemsModel> = (props) => {
+  // The props passed is of type "PostsItemsModel"
+
+  const { posts, loading } = props;
 
   return (
     <Fragment>
@@ -16,13 +33,14 @@ const PostsItems: FC<PostsModel> = (props) => {
           <div className="row">
             <div className="col-md-6 col-lg-6 col-xl-8 d-flex">
               <Link
-                to={`/single/${post.title}`}
+                to="news"
                 state={{
                   content: post.content,
                   img: post.urlToImage,
                   title: post.title,
                   desc: post.description,
                   author: post.author,
+                  loading,
                 }}
                 className="img w-100 mb-md-0 mb-3"
                 style={{
@@ -35,13 +53,14 @@ const PostsItems: FC<PostsModel> = (props) => {
                 <span className="subheading">{post.source.name}</span>
                 <h2>
                   <Link
-                    to={`/single/${post.title}`}
+                    to="news"
                     state={{
                       content: post.content,
                       img: post.urlToImage,
                       title: post.title,
                       desc: post.description,
                       author: post.author,
+                      loading,
                     }}
                   >
                     {post.title}

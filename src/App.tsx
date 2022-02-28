@@ -7,7 +7,8 @@ import Blog from './components/pages/Blog';
 import Landing from './components/pages/Landing';
 import Contact from './components/pages/Contact';
 import Single from './components/pages/SinglePost';
-import BlogPosts from './components/blog/BlogPosts';
+// import BlogPosts from './components/blog/BlogPosts';
+// import CommentSection from './components/pages/CommentSection';
 
 const App: FC = () => {
   return (
@@ -16,10 +17,9 @@ const App: FC = () => {
         <NavbarComponent />
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/posts" element={<Blog />} />
-          <Route path="/single/:title" element={<Single />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/blog/posts" element={<BlogPosts />} />
+          <Route path="posts" element={<Blog />} />
+          <Route path="news" element={<Single />} />
+          <Route path="contact" element={<Contact />} />
         </Routes>
         <Footer />
       </Fragment>
