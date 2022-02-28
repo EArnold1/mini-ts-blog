@@ -7,6 +7,8 @@ import Blog from './components/pages/Blog';
 import Landing from './components/pages/Landing';
 import Contact from './components/pages/Contact';
 import Single from './components/pages/SinglePost';
+import Articles from './components/pages/articles/Articles';
+import Illustration from './components/pages/articles/Illustration';
 // import BlogPosts from './components/blog/BlogPosts';
 // import CommentSection from './components/pages/CommentSection';
 
@@ -20,6 +22,9 @@ const App: FC = () => {
           <Route path="posts" element={<Blog />} />
           <Route path="news" element={<Single />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="articles" element={<Articles />}>
+            <Route path="illustration" element={<Illustration />} />
+          </Route>
         </Routes>
         <Footer />
       </Fragment>

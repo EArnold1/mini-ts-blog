@@ -46,7 +46,7 @@ const FooterSection: FC = () => {
                     className="img mr-4 rounded"
                     style={{
                       backgroundImage:
-                        'url(images/ximage_1.jpg.pagespeed.ic.6nutUC1128.jpg)',
+                        'url(/images/ximage_1.jpg.pagespeed.ic.6nutUC1128.jpg)',
                     }}
                   />
                   <div className="text">
@@ -73,7 +73,7 @@ const FooterSection: FC = () => {
                     className="img mr-4 rounded"
                     style={{
                       backgroundImage:
-                        'url(images/ximage_2.jpg.pagespeed.ic.HhFRahl7c7.jpg)',
+                        'url(/images/ximage_2.jpg.pagespeed.ic.HhFRahl7c7.jpg)',
                     }}
                   />
                   <div className="text">
