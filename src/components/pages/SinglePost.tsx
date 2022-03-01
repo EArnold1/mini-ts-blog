@@ -83,40 +83,22 @@ const Single: FC = () => {
                 />
               </p>
               <h2 className="mb-3">{postState.title.toLocaleUpperCase()}</h2>
+              <br />
               <p className="text-content">{postState.desc}</p>
-
-              <div className="tag-widget post-tag-container mb-5 mt-5">
-                <div className="tagcloud">
-                  <a href="#" className="tag-cloud-link">
-                    Life
-                  </a>
-                  <a href="#" className="tag-cloud-link">
-                    Sport
-                  </a>
-                  <a href="#" className="tag-cloud-link">
-                    Tech
-                  </a>
-                  <a href="#" className="tag-cloud-link">
-                    Travel
-                  </a>
-                </div>
-              </div>
+              <br />
               <div className="about-author d-flex bg-light p-4">
                 <div className="bio mr-5">
                   <img
                     src={`https://ershemug.sirv.com/mini-ts-blog/reporter.jpg`}
                     alt="Image placeholder"
-                    className="img-fluid mb-4"
+                    className="img-fluid mb-4 rounded"
                   />
                 </div>
                 <div className="desc">
                   <h3>{postState.author.toLocaleUpperCase()}</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Ducimus itaque, autem necessitatibus voluptate quod mollitia
-                    delectus aut, sunt placeat nam vero culpa sapiente
-                    consectetur similique, inventore eos fugit cupiditate
-                    numquam!
+                    <span className="lead"> {postState.title} </span>-{' '}
+                    {postState.desc}
                   </p>
                 </div>
               </div>
