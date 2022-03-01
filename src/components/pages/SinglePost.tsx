@@ -8,6 +8,7 @@ import PostsContext from '../../contexts/posts/postsContext';
 import Moment from 'react-moment';
 import axios from 'axios';
 import { ActionTypes } from '../../contexts/posts/types';
+import Loader from '../layout/Loader';
 // import CommentSection from './CommentSection';
 
 interface ValuesType {
@@ -149,41 +150,48 @@ const Single: FC = () => {
               </div>
               <div className="sidebar-box">
                 <h3>Recent Blog</h3>
-                {recentPosts.map((recentPost) => (
-                  <div className="block-21 d-flex mb-4" key={recentPost.title}>
-                    <a
-                      className="blog-img mr-4"
-                      style={{
-                        backgroundImage: `url(${recentPost.urlToImage})`,
-                      }}
-                    />
-                    <div className="text">
-                      <h3 className="heading">
-                        <a href="#">{recentPost.title}</a>
-                      </h3>
-                      <div className="meta">
-                        <div>
-                          <a href="#">
-                            <span className="icon-calendar" />{' '}
-                            <Moment format="YYYY/MM/DD">
-                              {recentPost.publishedAt}
-                            </Moment>
-                          </a>
-                        </div>
-                        <div>
-                          <a href="#">
-                            <span className="icon-person" /> Admin
-                          </a>
-                        </div>
-                        {/* <div>
+                {postState.loading ? (
+                  <Loader />
+                ) : (
+                  recentPosts.map((recentPost) => (
+                    <div
+                      className="block-21 d-flex mb-4"
+                      key={recentPost.title}
+                    >
+                      <a
+                        className="blog-img mr-4"
+                        style={{
+                          backgroundImage: `url(${recentPost.urlToImage})`,
+                        }}
+                      />
+                      <div className="text">
+                        <h3 className="heading">
+                          <a href="#">{recentPost.title}</a>
+                        </h3>
+                        <div className="meta">
+                          <div>
+                            <a href="#">
+                              <span className="icon-calendar" />{' '}
+                              <Moment format="YYYY/MM/DD">
+                                {recentPost.publishedAt}
+                              </Moment>
+                            </a>
+                          </div>
+                          <div>
+                            <a href="#">
+                              <span className="icon-person" /> Admin
+                            </a>
+                          </div>
+                          {/* <div>
                           <a href="#">
                             <span className="icon-chat" /> 19
                           </a>
                         </div> */}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </div>
           </div>

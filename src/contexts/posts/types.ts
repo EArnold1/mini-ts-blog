@@ -24,19 +24,11 @@ export interface PostsModel {
     }
   ];
   loading: boolean;
-  singlePost: {
-    content: string;
-    img: string;
-    title: string;
-    desc: string;
-    author: string;
-  };
 }
 
 export enum ActionTypes {
   GET_POSTS = 'GET_POSTS',
   GET_RECENT = 'GET_RECENT',
-  GET_SINGLE = 'GET_SINGLE',
 }
 
 export interface ActionValues {
@@ -88,11 +80,4 @@ export const initialState: PostsModel = {
       description: '',
     },
   ],
-  singlePost: {
-    content: '',
-    img: '',
-    desc: '',
-    title: '',
-    author: '',
-  },
 };
