@@ -131,11 +131,6 @@ const Single: FC = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/articles/branding">
-                      Branding <span className="ion-ios-arrow-forward" />
-                    </Link>
-                  </li>
-                  <li>
                     <Link to="/articles/application">
                       Application <span className="ion-ios-arrow-forward" />
                     </Link>

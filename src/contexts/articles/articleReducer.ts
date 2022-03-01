@@ -14,7 +14,7 @@ export default function articleReducer(
     case ActionTypes.GET_APPLICATION:
       return {
         ...state,
-        appication: action.payload,
+        application: action.payload,
         loading: false,
       };
     case ActionTypes.GET_DESIGN:
