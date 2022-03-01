@@ -9,6 +9,9 @@ import Contact from './components/pages/Contact';
 import Single from './components/pages/SinglePost';
 import Articles from './components/pages/articles/Articles';
 import Illustration from './components/pages/articles/Illustration';
+import Design from './components/pages/articles/Design';
+import Marketing from './components/pages/articles/Marketing';
+import Application from './components/pages/articles/Application';
 // import BlogPosts from './components/blog/BlogPosts';
 // import CommentSection from './components/pages/CommentSection';
 
@@ -24,6 +27,9 @@ const App: FC = () => {
           <Route path="contact" element={<Contact />} />
           <Route path="articles" element={<Articles />}>
             <Route path="illustration" element={<Illustration />} />
+            <Route path="design" element={<Design />} />
+            <Route path="marketing" element={<Marketing />} />
+            <Route path="application" element={<Application />} />
           </Route>
         </Routes>
         <Footer />

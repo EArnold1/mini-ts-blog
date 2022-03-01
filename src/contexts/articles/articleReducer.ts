@@ -11,6 +11,24 @@ export default function articleReducer(
         illustration: action.payload,
         loading: false,
       };
+    case ActionTypes.GET_APPLICATION:
+      return {
+        ...state,
+        appication: action.payload,
+        loading: false,
+      };
+    case ActionTypes.GET_DESIGN:
+      return {
+        ...state,
+        design: action.payload,
+        loading: false,
+      };
+    case ActionTypes.GET_MARKETING:
+      return {
+        ...state,
+        marketing: action.payload,
+        loading: false,
+      };
     default:
       return state;
   }

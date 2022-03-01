@@ -23,12 +23,36 @@ export interface ArticleModel {
       content: string;
     }
   ];
+  design: [
+    {
+      source: { id: string; name: string };
+      author: string;
+      title: string;
+      description: string;
+      urlToImage: string;
+      publishedAt: string;
+      content: string;
+    }
+  ];
+  application: [
+    {
+      source: { id: string; name: string };
+      author: string;
+      title: string;
+      description: string;
+      urlToImage: string;
+      publishedAt: string;
+      content: string;
+    }
+  ];
   loading: boolean;
 }
 
 export enum ActionTypes {
   GET_ILLUSTRATION = 'GET_ILLUSTRATION',
   GET_MARKETING = 'GET_MARKETING',
+  GET_DESIGN = 'GET_DESIGN',
+  GET_APPLICATION = 'GET_APPLICATION',
 }
 
 export interface ActionValues {
@@ -65,6 +89,34 @@ export const initialState: ArticleModel = {
     },
   ],
   marketing: [
+    {
+      source: {
+        id: '',
+        name: '',
+      },
+      author: '',
+      content: '',
+      publishedAt: '',
+      title: '',
+      urlToImage: '',
+      description: '',
+    },
+  ],
+  design: [
+    {
+      source: {
+        id: '',
+        name: '',
+      },
+      author: '',
+      content: '',
+      publishedAt: '',
+      title: '',
+      urlToImage: '',
+      description: '',
+    },
+  ],
+  application: [
     {
       source: {
         id: '',
