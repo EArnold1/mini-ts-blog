@@ -6,7 +6,7 @@ import { ActionTypes } from '../../../contexts/articles/types';
 
 const notFound: string = 'https://bit.ly/3Ir4euB';
 
-const Illustration: FC = () => {
+const Marketing: FC = () => {
   const { state, dispatch } = useContext(ArticleContext);
 
   useEffect(() => {
@@ -16,10 +16,10 @@ const Illustration: FC = () => {
   const getArticle = async () => {
     try {
       const res = await axios.get(
-        `https://newsapi.org/v2/everything?q=illustration&apiKey=${process.env.REACT_APP_APIKEY}`
+        `https://newsapi.org/v2/everything?q=marketing&apiKey=${process.env.REACT_APP_APIKEY}`
       );
       dispatch({
-        type: ActionTypes.GET_ILLUSTRATION,
+        type: ActionTypes.GET_MARKETING,
         payload: res.data.articles,
       });
     } catch (err) {
@@ -27,7 +27,7 @@ const Illustration: FC = () => {
     }
   };
 
-  const { loading, illustration } = state;
+  const { loading, marketing } = state;
 
   return (
     <Fragment>
@@ -39,7 +39,7 @@ const Illustration: FC = () => {
           <div className="row">
             <div className="col-md-12">
               {!loading &&
-                illustration.map((val) => (
+                marketing.map((val) => (
                   <div className="case" key={val.title}>
                     <div className="row">
                       <div className="col-md-6 col-lg-6 col-xl-8 d-flex">
@@ -84,4 +84,4 @@ const Illustration: FC = () => {
   );
 };
 
-export default Illustration;
+export default Marketing;
