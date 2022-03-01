@@ -3,6 +3,7 @@
 import { FC, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
+import Loader from '../layout/Loader';
 
 interface PostsItemsModel {
   posts:
@@ -28,7 +29,9 @@ const PostsItems: FC<PostsItemsModel> = (props) => {
 
   return (
     <Fragment>
-      {!loading &&
+      {loading ? (
+        <Loader />
+      ) : (
         posts.map((post) => (
           <div className="case" key={post.title}>
             <div className="row">
@@ -96,7 +99,8 @@ const PostsItems: FC<PostsItemsModel> = (props) => {
               </div>
             </div>
           </div>
-        ))}
+        ))
+      )}
     </Fragment>
   );
 };

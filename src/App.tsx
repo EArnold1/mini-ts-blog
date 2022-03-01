@@ -11,7 +11,7 @@ import Articles from './components/pages/articles/Articles';
 import Illustration from './components/pages/articles/Illustration';
 import Design from './components/pages/articles/Design';
 import Marketing from './components/pages/articles/Marketing';
-import Application from './components/pages/articles/Application';
+import Food from './components/pages/articles/Food';
 // import BlogPosts from './components/blog/BlogPosts';
 // import CommentSection from './components/pages/CommentSection';
 
@@ -29,7 +29,7 @@ const App: FC = () => {
             <Route path="illustration" element={<Illustration />} />
             <Route path="design" element={<Design />} />
             <Route path="marketing" element={<Marketing />} />
-            <Route path="application" element={<Application />} />
+            <Route path="food" element={<Food />} />
           </Route>
         </Routes>
         <Footer />

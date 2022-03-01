@@ -11,10 +11,10 @@ export default function articleReducer(
         illustration: action.payload,
         loading: false,
       };
-    case ActionTypes.GET_APPLICATION:
+    case ActionTypes.GET_FOOD:
       return {
         ...state,
-        application: action.payload,
+        food: action.payload,
         loading: false,
       };
     case ActionTypes.GET_DESIGN:

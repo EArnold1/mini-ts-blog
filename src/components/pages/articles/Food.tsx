@@ -7,7 +7,7 @@ import Loader from '../../layout/Loader';
 
 const notFound: string = 'https://ershemug.sirv.com/mini-ts-blog/notFound.jpg';
 
-const Application: FC = () => {
+const Food: FC = () => {
   const { state, dispatch } = useContext(ArticleContext);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Application: FC = () => {
         `https://newsapi.org/v2/everything?q=food&apiKey=${process.env.REACT_APP_APIKEY}`
       );
       dispatch({
-        type: ActionTypes.GET_APPLICATION,
+        type: ActionTypes.GET_FOOD,
         payload: res.data.articles,
       });
     } catch (err) {
@@ -28,7 +28,7 @@ const Application: FC = () => {
     }
   };
 
-  const { loading, application } = state;
+  const { loading, food } = state;
 
   return (
     <Fragment>
@@ -42,7 +42,7 @@ const Application: FC = () => {
               {loading ? (
                 <Loader />
               ) : (
-                application.map((val) => (
+                food.map((val) => (
                   <div className="case" key={val.title}>
                     <div className="row">
                       <div className="col-md-6 col-lg-6 col-xl-8 d-flex">
@@ -88,4 +88,4 @@ const Application: FC = () => {
   );
 };
 
-export default Application;
+export default Food;

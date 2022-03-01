@@ -34,7 +34,7 @@ export interface ArticleModel {
       content: string;
     }
   ];
-  application: [
+  food: [
     {
       source: { id: string; name: string };
       author: string;
@@ -52,7 +52,7 @@ export enum ActionTypes {
   GET_ILLUSTRATION = 'GET_ILLUSTRATION',
   GET_MARKETING = 'GET_MARKETING',
   GET_DESIGN = 'GET_DESIGN',
-  GET_APPLICATION = 'GET_APPLICATION',
+  GET_FOOD = 'GET_FOOD',
 }
 
 export interface ActionValues {
@@ -116,7 +116,7 @@ export const initialState: ArticleModel = {
       description: '',
     },
   ],
-  application: [
+  food: [
     {
       source: {
         id: '',
