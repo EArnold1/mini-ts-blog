@@ -3,8 +3,9 @@ import Moment from 'react-moment';
 import { Fragment, FC, useEffect, useContext } from 'react';
 import ArticleContext from '../../../contexts/articles/articleContext';
 import { ActionTypes } from '../../../contexts/articles/types';
+import Loader from '../../layout/Loader';
 
-const notFound: string = 'https://bit.ly/3Ir4euB';
+const notFound: string = 'https://ershemug.sirv.com/mini-ts-blog/notFound.jpg';
 
 const Application: FC = () => {
   const { state, dispatch } = useContext(ArticleContext);
@@ -16,7 +17,7 @@ const Application: FC = () => {
   const getArticle = async () => {
     try {
       const res = await axios.get(
-        `https://newsapi.org/v2/everything?q=application&apiKey=${process.env.REACT_APP_APIKEY}`
+        `https://newsapi.org/v2/everything?q=food&apiKey=${process.env.REACT_APP_APIKEY}`
       );
       dispatch({
         type: ActionTypes.GET_APPLICATION,
@@ -38,7 +39,9 @@ const Application: FC = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              {!loading &&
+              {loading ? (
+                <Loader />
+              ) : (
                 application.map((val) => (
                   <div className="case" key={val.title}>
                     <div className="row">
@@ -47,9 +50,9 @@ const Application: FC = () => {
                           className="img w-100 mb-md-0 mb-3"
                           style={{
                             backgroundImage: `url(${
-                              !val.author && !val.urlToImage
-                                ? notFound
-                                : val.urlToImage
+                              val.author !== null && val.urlToImage !== null
+                                ? val.urlToImage
+                                : notFound
                             })`,
                           }}
                         />
@@ -75,7 +78,8 @@ const Application: FC = () => {
                       </div>
                     </div>
                   </div>
-                ))}
+                ))
+              )}
             </div>
           </div>
         </div>

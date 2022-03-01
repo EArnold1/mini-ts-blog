@@ -103,7 +103,7 @@ const Single: FC = () => {
               <div className="about-author d-flex bg-light p-4">
                 <div className="bio mr-5">
                   <img
-                    src="images/xperson_1.jpg.pagespeed.ic.8e2vi2ER3S.jpg"
+                    src={`https://ershemug.sirv.com/mini-ts-blog/reporter.jpg`}
                     alt="Image placeholder"
                     className="img-fluid mb-4"
                   />
