@@ -1,8 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useContext } from 'react';
+import PostsContext from '../../contexts/posts/postsContext';
+import Loader from '../layout/Loader';
+import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
 
 const FooterSection: FC = () => {
+  const { state } = useContext(PostsContext);
+
+  const { loading, posts } = state;
+
   return (
     <Fragment>
       <footer className="ftco-footer ftco-bg-dark ftco-section">
@@ -19,82 +27,59 @@ const FooterSection: FC = () => {
                   Far far away, behind the word mountains, far from the
                   countries Vokalia and Consonantia, there live the blind texts.
                 </p>
-                <ul className="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                  <li className="ftco-animate">
-                    <a href="#">
-                      <span className="icon-twitter" />
-                    </a>
-                  </li>
-                  <li className="ftco-animate">
-                    <a href="#">
-                      <span className="icon-facebook" />
-                    </a>
-                  </li>
-                  <li className="ftco-animate">
-                    <a href="#">
-                      <span className="icon-instagram" />
-                    </a>
-                  </li>
-                </ul>
               </div>
             </div>
             <div className="col-md">
               <div className="ftco-footer-widget mb-4">
                 <h2 className="ftco-heading-2">latest News</h2>
-                <div className="block-21 d-flex mb-4">
-                  <a
-                    className="img mr-4 rounded"
-                    style={{
-                      backgroundImage:
-                        'url(/images/ximage_1.jpg.pagespeed.ic.6nutUC1128.jpg)',
-                    }}
-                  />
-                  <div className="text">
-                    <h3 className="heading">
-                      <a href="#">
-                        Even the all-powerful Pointing has no control about
-                      </a>
-                    </h3>
-                    <div className="meta">
-                      <div>
-                        <a href="#"> Oct. 16, 2019</a>
-                      </div>
-                      <div>
-                        <a href="#"> Admin</a>
-                      </div>
-                      <div>
-                        <a href="#"> 19</a>
-                      </div>
+                {loading ? (
+                  <Loader />
+                ) : (
+                  <div className="block-21 d-flex mb-4">
+                    <Link
+                      to="news"
+                      state={{
+                        content: posts[0].content,
+                        img: posts[0].urlToImage,
+                        title: posts[0].title,
+                        desc: posts[0].description,
+                        author: posts[0].author,
+                        loading,
+                      }}
+                      className="img mr-4 rounded"
+                      style={{
+                        backgroundImage: `url(${posts[0].urlToImage})`,
+                      }}
+                    />
+                    <div className="text d-md-none d-lg-block">
+                      <Link
+                        to="news"
+                        state={{
+                          content: posts[0].content,
+                          img: posts[0].urlToImage,
+                          title: posts[0].title,
+                          desc: posts[0].description,
+                          author: posts[0].author,
+                          loading,
+                        }}
+                      >
+                        <h3 className="heading">
+                          <p>{posts[0].title}</p>
+                        </h3>
+                        <div className="meta">
+                          <div>
+                            <Moment format="YYYY/MM/DD">
+                              {posts[0].publishedAt}
+                            </Moment>
+                          </div>
+                          <div>
+                            <p>{posts[0].author}</p>
+                          </div>
+                        </div>
+                      </Link>
                     </div>
                   </div>
-                </div>
-                <div className="block-21 d-flex mb-4">
-                  <a
-                    className="img mr-4 rounded"
-                    style={{
-                      backgroundImage:
-                        'url(/images/ximage_2.jpg.pagespeed.ic.HhFRahl7c7.jpg)',
-                    }}
-                  />
-                  <div className="text">
-                    <h3 className="heading">
-                      <a href="#">
-                        Even the all-powerful Pointing has no control about
-                      </a>
-                    </h3>
-                    <div className="meta">
-                      <div>
-                        <a href="#"> Oct. 16, 2019</a>
-                      </div>
-                      <div>
-                        <a href="#"> Admin</a>
-                      </div>
-                      <div>
-                        <a href="#"> 19</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
             <div className="col-md">
@@ -102,35 +87,35 @@ const FooterSection: FC = () => {
                 <h2 className="ftco-heading-2">Information</h2>
                 <ul className="list-unstyled">
                   <li>
-                    <a href="#" className="d-block py-1">
+                    <Link to="/" className="d-block py-1">
                       <span className="ion-ios-arrow-forward mr-3" />
                       Home
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" className="d-block py-1">
+                    <Link to="about" className="d-block py-1">
                       <span className="ion-ios-arrow-forward mr-3" />
                       About
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" className="d-block py-1">
+                    <Link to="articles" className="d-block py-1">
                       <span className="ion-ios-arrow-forward mr-3" />
                       Articles
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" className="d-block py-1">
+                    <Link to="contact" className="d-block py-1">
                       <span className="ion-ios-arrow-forward mr-3" />
                       Contact
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
             </div>
             <div className="col-md">
               <div className="ftco-footer-widget mb-4">
-                <h2 className="ftco-heading-2">Have a Questions?</h2>
+                <h2 className="ftco-heading-2">Have a Question?</h2>
                 <div className="block-23 mb-3">
                   <ul>
                     <li>
@@ -154,7 +139,7 @@ const FooterSection: FC = () => {
                             className="__cf_email__"
                             data-cfemail="5f363139301f26302a2d3b30323e3631713c3032"
                           >
-                            [email&nbsp;protected]
+                            Email
                           </span>
                         </span>
                       </a>
