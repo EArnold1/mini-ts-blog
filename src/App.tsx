@@ -15,6 +15,7 @@ import Food from './components/pages/articles/Food';
 import { ActionTypes } from './contexts/posts/types';
 import PostsContext from './contexts/posts/postsContext';
 import Market from './components/pages/articles/Market';
+import BlogPosts from './components/blog/BlogPosts';
 
 // import BlogPosts from './components/blog/BlogPosts';
 // import CommentSection from './components/pages/CommentSection';
@@ -48,6 +49,7 @@ const App: FC = () => {
           <Route path="/" element={<Landing />} />
           <Route path="posts" element={<Blog />} />
           <Route path="news" element={<Single />} />
+          <Route path="blogposts" element={<BlogPosts />} />
           <Route path="contact" element={<Contact />} />
           <Route path="articles" element={<Articles />}>
             <Route path="illustration" element={<Illustration />} />

@@ -10,6 +10,7 @@ export interface PostsModel {
       urlToImage: string;
       publishedAt: string;
       content: string;
+      url: string;
     }
   ];
   recentPosts: [
@@ -21,6 +22,7 @@ export interface PostsModel {
       urlToImage: string;
       publishedAt: string;
       content: string;
+      url: string;
     }
   ];
   loading: boolean;
@@ -44,6 +46,7 @@ export interface ActionValues {
           content: string;
           publishedAt: string;
           title: string;
+          url: string;
           urlToImage: string;
           description: string;
         }
@@ -63,6 +66,7 @@ export const initialState: PostsModel = {
       title: '',
       urlToImage: '',
       description: '',
+      url: '',
     },
   ],
   loading: true,
@@ -78,6 +82,7 @@ export const initialState: PostsModel = {
       title: '',
       urlToImage: '',
       description: '',
+      url: '',
     },
   ],
 };

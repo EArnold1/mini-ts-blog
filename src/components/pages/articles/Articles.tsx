@@ -1,10 +1,18 @@
-import { Fragment, FC, useState } from 'react';
-import { Outlet, Link, useNavigate } from 'react-router-dom';
+import { Fragment, FC, useState, useEffect } from 'react';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { Tabs, Tab } from 'react-bootstrap';
 
 const Articles: FC = () => {
-  const [key, setKey] = useState<any>('design');
+  const location = useLocation();
+
+  const [key, setKey] = useState<any>('/articles/design');
+
+  useEffect(() => {
+    if (location.pathname !== '/articles') setKey(location.pathname);
+  }, []);
+
   const navigate = useNavigate();
+
   return (
     <Fragment>
       <div className="home text-secondary rounded p-5">
@@ -13,28 +21,6 @@ const Articles: FC = () => {
         </section>
       </div>
       <div className="container my-5">
-        {/* <ul className="nav nav-tabs nav-justified">
-          <li className="nav-item">
-            <Link className="nav-link active" to="market">
-              Market
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link active" to="design">
-              Design
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="food">
-              Food
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="illustration">
-              Illustration
-            </Link>
-          </li>
-        </ul> */}
         <Tabs
           defaultActiveKey="Design"
           id="controlled-tab-example"
@@ -45,10 +31,10 @@ const Articles: FC = () => {
           }}
           className="nav-justified mb-3"
         >
-          <Tab eventKey="design" title="Design" />
-          <Tab eventKey="food" title="Food" />
-          <Tab eventKey="market" title="Market" />
-          <Tab eventKey="illustration" title="Illustration" />
+          <Tab eventKey="/articles/design" title="Design" />
+          <Tab eventKey="/articles/food" title="Food" />
+          <Tab eventKey="/articles/market" title="Market" />
+          <Tab eventKey="/articles/illustration" title="Illustration" />
         </Tabs>
         <br />
       </div>

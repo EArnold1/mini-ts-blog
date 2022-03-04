@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/alt-text */
 import { FC, Fragment, useState, useEffect, useContext } from 'react';
-import { Link, useLocation, useNavigate, Outlet } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import PostsContext from '../../contexts/posts/postsContext';
 import Moment from 'react-moment';
 import axios from 'axios';
@@ -18,6 +18,7 @@ interface ValuesType {
   desc: string;
   author: string;
   loading: boolean;
+  url: string;
 }
 
 const Single: FC = () => {
@@ -46,6 +47,7 @@ const Single: FC = () => {
     title: '',
     desc: '',
     author: '',
+    url: '',
     loading: true,
   });
 
@@ -54,9 +56,9 @@ const Single: FC = () => {
   useEffect(() => {
     getRecentPosts();
     if (values !== null) {
-      const { content, img, title, desc, author, loading } = values;
+      const { content, img, title, desc, author, loading, url } = values;
 
-      setPostState({ content, img, title, desc, author, loading });
+      setPostState({ content, img, title, desc, author, loading, url });
     } else {
       return navigate('/');
       //else redirect back to home
@@ -85,7 +87,14 @@ const Single: FC = () => {
               <h2 className="mb-3">{postState.title.toLocaleUpperCase()}</h2>
               <br />
               <p className="text-content">{postState.desc}</p>
-              <br />
+              <a
+                href={`${postState.url}`}
+                rel="noreferrer"
+                target="_blank"
+                className="btn btn-info my-2"
+              >
+                Read More
+              </a>
               <div className="about-author d-flex bg-light p-4">
                 <div className="bio mr-5">
                   <img
@@ -141,31 +150,37 @@ const Single: FC = () => {
                       key={recentPost.title}
                     >
                       <a
-                        className="blog-img mr-4"
-                        style={{
-                          backgroundImage: `url(${recentPost.urlToImage})`,
-                        }}
-                      />
-                      <div className="text">
-                        <h3 className="heading">{recentPost.title}</h3>
-                        <div className="meta">
-                          <div>
-                            <span className="icon-calendar" />{' '}
-                            <Moment format="YYYY/MM/DD">
-                              {recentPost.publishedAt}
-                            </Moment>
-                          </div>
-                          <div>
-                            <span className="icon-person" />{' '}
-                            {recentPost.source.name}
-                          </div>
-                          {/* <div>
+                        href={`${recentPost.url}`}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        <img
+                          className="blog-img mr-4"
+                          style={{
+                            backgroundImage: `url(${recentPost.urlToImage})`,
+                          }}
+                        />
+                        <div className="text">
+                          <h3 className="heading">{recentPost.title}</h3>
+                          <div className="meta">
+                            <div>
+                              <span className="icon-calendar" />{' '}
+                              <Moment format="YYYY/MM/DD">
+                                {recentPost.publishedAt}
+                              </Moment>
+                            </div>
+                            <div>
+                              <span className="icon-person" />{' '}
+                              {recentPost.source.name}
+                            </div>
+                            {/* <div>
                           <a href="#">
                             <span className="icon-chat" /> 19
                           </a>
                         </div> */}
+                          </div>
                         </div>
-                      </div>
+                      </a>
                     </div>
                   ))
                 )}

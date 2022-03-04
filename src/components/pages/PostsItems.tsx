@@ -16,6 +16,7 @@ interface PostsItemsModel {
           urlToImage: string;
           publishedAt: string;
           content: string;
+          url: string;
         }
       ]
     | [];
@@ -45,6 +46,7 @@ const PostsItems: FC<PostsItemsModel> = (props) => {
                     desc: post.description,
                     author: post.author,
                     loading,
+                    url: post.url,
                   }}
                   className="img w-100 mb-md-0 mb-3"
                   style={{
@@ -65,6 +67,7 @@ const PostsItems: FC<PostsItemsModel> = (props) => {
                         desc: post.description,
                         author: post.author,
                         loading,
+                        url: post.url,
                       }}
                     >
                       {post.title}
