@@ -114,8 +114,8 @@ const Single: FC = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/articles/application">
-                      Application <span className="ion-ios-arrow-forward" />
+                    <Link to="/articles/food">
+                      Food <span className="ion-ios-arrow-forward" />
                     </Link>
                   </li>
                   <li>
@@ -132,7 +132,7 @@ const Single: FC = () => {
               </div>
               <div className="sidebar-box">
                 <h3>Recent Blog</h3>
-                {postState.loading ? (
+                {recentPosts[0].author === '' ? (
                   <Loader />
                 ) : (
                   recentPosts.map((recentPost) => (
@@ -147,22 +147,17 @@ const Single: FC = () => {
                         }}
                       />
                       <div className="text">
-                        <h3 className="heading">
-                          <a href="#">{recentPost.title}</a>
-                        </h3>
+                        <h3 className="heading">{recentPost.title}</h3>
                         <div className="meta">
                           <div>
-                            <a href="#">
-                              <span className="icon-calendar" />{' '}
-                              <Moment format="YYYY/MM/DD">
-                                {recentPost.publishedAt}
-                              </Moment>
-                            </a>
+                            <span className="icon-calendar" />{' '}
+                            <Moment format="YYYY/MM/DD">
+                              {recentPost.publishedAt}
+                            </Moment>
                           </div>
                           <div>
-                            <a href="#">
-                              <span className="icon-person" /> Admin
-                            </a>
+                            <span className="icon-person" />{' '}
+                            {recentPost.source.name}
                           </div>
                           {/* <div>
                           <a href="#">
