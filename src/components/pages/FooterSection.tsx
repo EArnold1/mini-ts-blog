@@ -120,29 +120,19 @@ const FooterSection: FC = () => {
                   <ul>
                     <li>
                       <span className="icon icon-map-marker" />
+                      <span className="text">Port Harcourt, Nigeria</span>
+                    </li>
+                    <li>
+                      <span className="icon icon-phone" />
                       <span className="text">
-                        203 Fake St. Mountain View, San Francisco, California,
-                        USA
+                        <a href="tel:07063906125">Click to call</a>
                       </span>
                     </li>
                     <li>
-                      <a href="#">
-                        <span className="icon icon-phone" />
-                        <span className="text">+2 392 3929 210</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <span className="icon icon-envelope" />
-                        <span className="text">
-                          <span
-                            className="__cf_email__"
-                            data-cfemail="5f363139301f26302a2d3b30323e3631713c3032"
-                          >
-                            Email
-                          </span>
-                        </span>
-                      </a>
+                      <span className="icon icon-envelope" />
+                      <span className="text">
+                        <a href="mailto: arnoldddev@gmail.com">Send Email</a>
+                      </span>
                     </li>
                   </ul>
                 </div>
