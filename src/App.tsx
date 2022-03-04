@@ -20,6 +20,14 @@ import BlogPosts from './components/blog/BlogPosts';
 // import BlogPosts from './components/blog/BlogPosts';
 // import CommentSection from './components/pages/CommentSection';
 
+let apiKey: string | undefined;
+
+if (process.env.NODE_ENV !== 'production') {
+  apiKey = process.env.REACT_APP_APIKEY;
+} else {
+  apiKey = process.env.APIKEY;
+}
+
 const App: FC = () => {
   const { dispatch } = useContext(PostsContext);
 
@@ -30,7 +38,7 @@ const App: FC = () => {
   const getNews = async () => {
     try {
       const res = await axios.get(
-        `https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${process.env.REACT_APP_APIKEY}`
+        `https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${apiKey}`
       );
       dispatch({
         type: ActionTypes.GET_POSTS,

@@ -7,6 +7,14 @@ import Loader from '../../layout/Loader';
 
 const notFound: string = 'https://ershemug.sirv.com/mini-ts-blog/notFound.jpg';
 
+let apiKey: string | undefined;
+
+if (process.env.NODE_ENV !== 'production') {
+  apiKey = process.env.REACT_APP_APIKEY;
+} else {
+  apiKey = process.env.APIKEY;
+}
+
 const Food: FC = () => {
   const { state, dispatch } = useContext(ArticleContext);
 
@@ -17,7 +25,7 @@ const Food: FC = () => {
   const getArticle = async () => {
     try {
       const res = await axios.get(
-        `https://newsapi.org/v2/everything?q=food&apiKey=${process.env.REACT_APP_APIKEY}`
+        `https://newsapi.org/v2/everything?q=food&apiKey=${apiKey}`
       );
       dispatch({
         type: ActionTypes.GET_FOOD,

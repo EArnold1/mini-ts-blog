@@ -21,6 +21,14 @@ interface ValuesType {
   url: string;
 }
 
+let apiKey: string | undefined;
+
+if (process.env.NODE_ENV !== 'production') {
+  apiKey = process.env.REACT_APP_APIKEY;
+} else {
+  apiKey = process.env.APIKEY;
+}
+
 const Single: FC = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useContext(PostsContext);
@@ -28,7 +36,7 @@ const Single: FC = () => {
   const getRecentPosts = async (): Promise<void> => {
     try {
       const res = await axios.get(
-        `https://newsapi.org/v2/top-headlines?sources=abc-news&pageSize=5&apiKey=${process.env.REACT_APP_APIKEY}`
+        `https://newsapi.org/v2/top-headlines?sources=abc-news&pageSize=5&apiKey=${apiKey}`
       );
       dispatch({
         type: ActionTypes.GET_RECENT,
