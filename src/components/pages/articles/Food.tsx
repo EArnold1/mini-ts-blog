@@ -33,13 +33,13 @@ const Food: FC = () => {
   return (
     <Fragment>
       <div className="mt-4 text-center">
-        <h2>APPLICATION</h2>
+        <h2>FOOD</h2>
       </div>
       <section className="ftco-section">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              {food[0].description ? (
+              {food[0].description === '' ? (
                 <Loader />
               ) : (
                 food.map((val) => (

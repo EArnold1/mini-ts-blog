@@ -33,7 +33,7 @@ const Market: FC = () => {
   return (
     <Fragment>
       <div className="mt-4 text-center">
-        <h2>SPORTS</h2>
+        <h2>MARKET</h2>
       </div>
       <section className="ftco-section">
         <div className="container">
