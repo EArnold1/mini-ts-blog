@@ -39,7 +39,7 @@ const Design: FC = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              {loading ? (
+              {design[0].description === '' ? (
                 <Loader />
               ) : (
                 design.map((val) => (

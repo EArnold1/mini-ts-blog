@@ -7,7 +7,7 @@ import Loader from '../../layout/Loader';
 
 const notFound: string = 'https://ershemug.sirv.com/mini-ts-blog/notFound.jpg';
 
-const Marketing: FC = () => {
+const Market: FC = () => {
   const { state, dispatch } = useContext(ArticleContext);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const Marketing: FC = () => {
   const getArticle = async () => {
     try {
       const res = await axios.get(
-        `https://newsapi.org/v2/everything?q=marketing&apiKey=${process.env.REACT_APP_APIKEY}`
+        `https://newsapi.org/v2/everything?q=market&apiKey=${process.env.REACT_APP_APIKEY}`
       );
       dispatch({
         type: ActionTypes.GET_MARKETING,
@@ -28,18 +28,18 @@ const Marketing: FC = () => {
     }
   };
 
-  const { loading, marketing } = state;
+  const { marketing } = state;
 
   return (
     <Fragment>
       <div className="mt-4 text-center">
-        <h2>MARKETING</h2>
+        <h2>SPORTS</h2>
       </div>
       <section className="ftco-section">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              {loading ? (
+              {marketing[0].description === '' ? (
                 <Loader />
               ) : (
                 marketing.map((val) => (
@@ -88,4 +88,4 @@ const Marketing: FC = () => {
   );
 };
 
-export default Marketing;
+export default Market;

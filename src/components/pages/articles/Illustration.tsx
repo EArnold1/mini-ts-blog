@@ -28,7 +28,7 @@ const Illustration: FC = () => {
     }
   };
 
-  const { loading, illustration } = state;
+  const { illustration } = state;
 
   return (
     <Fragment>
@@ -39,7 +39,7 @@ const Illustration: FC = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              {loading ? (
+              {illustration[0].description === '' ? (
                 <Loader />
               ) : (
                 illustration.map((val) => (

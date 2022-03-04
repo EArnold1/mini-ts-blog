@@ -28,7 +28,7 @@ const Food: FC = () => {
     }
   };
 
-  const { loading, food } = state;
+  const { food } = state;
 
   return (
     <Fragment>
@@ -39,7 +39,7 @@ const Food: FC = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              {loading ? (
+              {food[0].description ? (
                 <Loader />
               ) : (
                 food.map((val) => (
