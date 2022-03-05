@@ -11,6 +11,8 @@ import { ActionTypes } from '../../contexts/posts/types';
 import Loader from '../layout/Loader';
 // import CommentSection from './CommentSection';
 
+const notFound: string = 'https://ershemug.sirv.com/mini-ts-blog/notFound.jpg';
+
 interface ValuesType {
   content: string;
   img: string;
@@ -99,7 +101,7 @@ const Single: FC = () => {
                 href={`${postState.url}`}
                 rel="noreferrer"
                 target="_blank"
-                className="btn btn-info my-2"
+                className="btn btn-warning text-primary my-2"
               >
                 Read More
               </a>
@@ -165,7 +167,12 @@ const Single: FC = () => {
                         <img
                           className="blog-img mr-4"
                           style={{
-                            backgroundImage: `url(${recentPost.urlToImage})`,
+                            backgroundImage: `url(${
+                              recentPost.urlToImage !== 'null' ||
+                              recentPost.urlToImage !== null
+                                ? recentPost.urlToImage
+                                : notFound
+                            })`,
                           }}
                         />
                         <div className="text">

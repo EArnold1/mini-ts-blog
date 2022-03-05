@@ -5,7 +5,7 @@ import { Tabs, Tab } from 'react-bootstrap';
 const Articles: FC = () => {
   const location = useLocation();
 
-  const [key, setKey] = useState<any>('/articles/design');
+  const [key, setKey] = useState<any>('');
 
   useEffect(() => {
     if (location.pathname !== '/articles') setKey(location.pathname);
