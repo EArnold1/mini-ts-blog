@@ -26,6 +26,7 @@ if (process.env.NODE_ENV !== 'production') {
   apiKey = process.env.REACT_APP_APIKEY;
 } else {
   apiKey = process.env.APIKEY;
+  console.log(apiKey)
 }
 
 const App: FC = () => {

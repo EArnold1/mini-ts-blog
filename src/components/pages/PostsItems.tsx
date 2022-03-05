@@ -73,29 +73,13 @@ const PostsItems: FC<PostsItemsModel> = (props) => {
                       {post.title}
                     </Link>
                   </h2>
-                  <ul className="media-social list-unstyled">
-                    <li className="ftco-animate">
-                      <a href="#">
-                        <span className="icon-twitter" />
-                      </a>
-                    </li>
-                    <li className="ftco-animate">
-                      <a href="#">
-                        <span className="icon-facebook" />
-                      </a>
-                    </li>
-                    <li className="ftco-animate">
-                      <a href="#">
-                        <span className="icon-instagram" />
-                      </a>
-                    </li>
-                  </ul>
-                  <div className="meta">
+                  <br />
+                  <div className="meta mt-5">
                     <p className="mb-0">
                       <span>
                         <Moment format="YYYY/MM/DD">{post.publishedAt}</Moment>
                       </span>{' '}
-                      | <span>12 min read</span>
+                      | <span>{post.source.name}</span>
                     </p>
                   </div>
                 </div>
