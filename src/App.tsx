@@ -25,8 +25,8 @@ let apiKey: string | undefined;
 if (process.env.NODE_ENV !== 'production') {
   apiKey = process.env.REACT_APP_APIKEY;
 } else {
-  apiKey = process.env.APIKEY;
-  const newKey: any = process.env.APIKEY;
+  apiKey = process.env.API_SECRET;
+  const newKey: any = process.env.API_SECRET;
   console.log(apiKey);
   console.log(newKey, 1);
 }
