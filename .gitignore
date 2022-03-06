@@ -1,6 +1,6 @@
 node_modules
 .env
-.toml
+netlify.toml
 build
 # Local Netlify folder
 .netlify

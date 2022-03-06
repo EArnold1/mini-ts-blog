@@ -1,2 +1,6 @@
 [build]
     publish="build"
+
+
+[build.environemt]
+           API_SECRET = "80c1b3cdbf694d129c1afb2273e844f0"

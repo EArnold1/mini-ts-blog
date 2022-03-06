@@ -20,16 +20,16 @@ import BlogPosts from './components/blog/BlogPosts';
 // import BlogPosts from './components/blog/BlogPosts';
 // import CommentSection from './components/pages/CommentSection';
 
-let apiKey: string | undefined;
+// let apiKey: string | undefined = process.env.REACT_APP_APIKEY;
 
-if (process.env.NODE_ENV !== 'production') {
-  apiKey = process.env.REACT_APP_APIKEY;
-} else {
-  apiKey = process.env.API_SECRET;
-  const newKey: any = process.env.API_SECRET;
-  console.log(apiKey);
-  console.log(newKey, 1);
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   apiKey = process.env.REACT_APP_APIKEY;
+// } else {
+//   apiKey = process.env.API_SECRET;
+//   const newKey: any = process.env.API_SECRET;
+//   console.log(apiKey);
+//   console.log(newKey, 1);
+// }
 
 const App: FC = () => {
   const { dispatch } = useContext(PostsContext);
@@ -41,13 +41,14 @@ const App: FC = () => {
   const getNews = async () => {
     try {
       const res = await axios.get(
-        `https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${apiKey}`
+        `https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${process.env.REACT_APP_APIKEY}`
       );
       dispatch({
         type: ActionTypes.GET_POSTS,
         payload: res.data.articles,
       });
     } catch (err) {
+      console.log(err);
       alert('Server Error, try again');
     }
   };
