@@ -168,8 +168,7 @@ const Single: FC = () => {
                           className="blog-img mr-4"
                           style={{
                             backgroundImage: `url(${
-                              recentPost.urlToImage !== 'null' ||
-                              recentPost.urlToImage !== null
+                              recentPost.urlToImage !== 'null'
                                 ? recentPost.urlToImage
                                 : notFound
                             })`,
